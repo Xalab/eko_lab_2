@@ -76,6 +76,89 @@
             </tbody>
         </table>
     </div>
+    <div class="container">
+        <h3>Розрахунок податку</h3>
+        <p>Вкажіть тип налогу:</p>
+        <form class="form-base" name="choose-poll-form">
+            <input type="radio" name="pollution" value="air" id="poll1"> викиди в атмосферне повітря забруднюючих речовин
+            стаціонарними
+            джерелами забруднення<br>
+            <input type="radio" name="pollution" value="water" id="poll2"> за скиди забруднюючих речовин у водні об'єкти<br>
+            <input type="radio" name="pollution" value="storage" id="poll3"> за розміщення відходів<br>
+            <input type="radio" name="pollution" value="radioakt" id="poll4"> за утворення радіоактивних відходів <br>
+            <input type="radio" name="pollution" value="storageRadioakt" id="poll5"> за тимчасове зберігання радіоактивних відходів
+            їх виробниками понад
+            установлений особливими умовами ліцензії строк.<br>
+        </form>
+        <div class="air-poll" id="air-poll">
+            <form class="air-form" id="air-form">
+                <p>Вкажіть забруднюючу речовину</p>
+                <select name="selectAir" id="airPoll">
+                    <option value="azot">Азоту оксиди</option>
+                    <option value="amiak">Аміак</option>
+                    <option value="angid">Ангідрид сірчистий</option>
+                    <option value="aceton">Ацетон</option>
+                    <option value="benz">Бенз(о)пірен</option>
+                    <option value="but">Бутилацетат</option>
+                    <option value="vanad">Ванадію п’ятиокис</option>
+                    <option value="voden">Водень хлористий</option>
+                    <option value="vuglec">Вуглецю окис</option>
+                    <option value="vuglevod">Вуглеводні</option>
+                    <option value="ftor">Газоподібні фтористі сполуки</option>
+                    <option value="tverdy">Тверді речовини</option>
+                    <option value="kadmiy">Кадмію сполуки</option>
+                    <option value="marganec">Марганець та його сполуки</option>
+                    <option value="nikel">Нікель та його сполуки</option>
+                    <option value="ozon">Озон</option>
+                    <option value="rtut">Ртуть та її сполуки</option>
+                    <option value="svinec">Свинець та його сполуки</option>
+                    <option value="sirkovod">Сірководень</option>
+                    <option value="sirkovug">Сірковуглець</option>
+                    <option value="spirt">Спирт н-бутиловий</option>
+                    <option value="stirol">Стирол</option>
+                    <option value="fenol">Фенол</option>
+                    <option value="formaldegid">Формальдегід</option>
+                    <option value="hrom">Хром та його сполуки</option>
+                </select>
+                <p class="choose-t-air">Вкажіть кількість тонн речовини</p>
+                <input type="text" id="amount-air"><br><br>
+                <button class="btn btn-primary" id="rozrah-air">Розрахувати</button>
+                <p id="result-air" class="result-air"></p>
+            </form>
+        </div>
+        <div class="water-poll" id="water-poll">
+            <form class="water-form" id="water-form">
+                <p>Вкажіть забруднюючу речовину</p>
+                <select name="selectWater" id="waterPoll">
+                    <option value="azot">Азот амонійний</option>
+                    <option value="argan">Органічні речовини (за показниками біохімічного споживання кисню (БСК 5)</option>
+                    <option value="zavis">Завислі речовини</option>
+                    <option value="nafta">Нафтопродукти</option>
+                    <option value="nitrat">Нітрати</option>
+                    <option value="nitrit">Нітрити</option>
+                    <option value="sulfat">Сульфати</option>
+                    <option value="fosfat">Фосфати</option>
+                    <option value="hloryd">Хлориди</option>
+                </select>
+                <br><br>
+                <p class="p-water">Вкажіть кількість тонн речовини</p>
+                <p class="p-water right">Оберіть місто викиду</p>
+                <br>
+                <input type="text" id="amount-water">
+                <select class="selectWater" id="choose-place-water">
+                    <option value="ploho">Ставки чи озера</option>
+                    <option value="terpimo">Інше</option>
+                </select>
+                <br><br>
+                <button class="btn btn-primary" id="rozrah-water">Розрахувати</button>
+                <p id="result-water" class="result"></p>
+            </form>
+        </div>
+        <div class="storage-poll" id="storage-poll">3</div>
+        <div class="radio-poll" id="radio-poll">4</div>
+        <div class="storage-radio-poll" id="storage-radio-poll">5</div>
+    </div>
+    <script src="scrept.js"></script>
 </body>
 
 </html>

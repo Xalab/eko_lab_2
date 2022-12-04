@@ -3,9 +3,62 @@
     margin: 0;
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
     margin-bottom: 50px;
+}
+
+.form-base {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.air-poll {
+    padding: 20px;
+    display: none;
+}
+
+.choose-t-air {
+    padding-top: 20px;
+}
+
+.result {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.water-poll {
+    padding: 20px;
+    display: none;
+}
+
+.p-water {
+    display: inline-block;
+}
+
+.right {
+    padding-left: 30px;
+}
+
+.selectWater {
+    display:inline-block;
+    margin-left: 83px;
+}
+
+.storage-poll {
+    padding: 20px;
+    display: none;
+}
+
+.radio-poll {
+    padding: 20px;
+    display: none;
+}
+
+.storage-radio-poll {
+    padding: 20px;
+    display: none;
 }
 
 

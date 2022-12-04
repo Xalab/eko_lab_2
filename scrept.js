@@ -1,5 +1,3 @@
-const e = require("express")
-
 //ready
 let airPollution = {
     rechovina: [
@@ -7,7 +5,7 @@ let airPollution = {
         "Аміак",
         "Ангідрид сірчистий",
         "Ацетон",
-        "Бензопірпен",
+        "Бенз(о)пірен",
         "Бутилацетат",
         "Ванадію п'ятокис",
         "Водень хлористий",
@@ -117,13 +115,13 @@ let lezhachiNuclearVidhody = {
 
 //ready
 function nalogNaAir(amount, rechovyna) {
-    let nalog = airPollution.podatok[airPollution.rechovina.findIndex(rechovyna)];
+    let nalog = airPollution.podatok[airPollution.rechovina.findIndex((elem) => {return elem == rechovyna})];
     return nalog * amount;
 }
 
 //ready
-function nalogNaVodu(amount, rechovyna, place) {
-    let nalog = waterPollution.podatok[waterPollution.rechovina.findIndex(rechovyna)];
+function nalogNaWater(amount, rechovyna, place) {
+    let nalog = waterPollution.podatok[waterPollution.rechovina.findIndex((elem) => {return elem == rechovyna})];
     if (place == "Ставки чи озера") {
         return nalog * amount * 1.5;
     }
@@ -169,3 +167,81 @@ function nalogNaRadLezhachih(type, kuby) {
         return nalog * kuby;
     }
 }
+
+document.getElementById("air-form").addEventListener('submit', evt => {
+    evt.preventDefault();  
+});
+
+document.getElementById("water-form").addEventListener('submit', evt => {
+    evt.preventDefault();  
+});
+
+document.getElementById("rozrah-air").addEventListener("click", () => {
+    let massa = document.getElementById("amount-air").value;
+    let e = document.getElementById("airPoll");
+    let rechovyna = e.options[e.selectedIndex].text;
+    console.log(rechovyna);
+    console.log(massa);
+    let result = nalogNaAir(massa, rechovyna);
+    console.log(result);
+    document.getElementById("result-air").innerText = "Податок: " + result + "грн";
+});
+
+document.getElementById("rozrah-water").addEventListener("click", () => {
+    let massa = document.getElementById("amount-water").value;
+    let e = document.getElementById("waterPoll");
+    let rechovyna = e.options[e.selectedIndex].text;
+    e = document.getElementById("choose-place-water");
+    let place = e.options[e.selectedIndex].text;
+    console.log(rechovyna);
+    console.log(massa);
+    console.log(place);
+    let result = nalogNaWater(massa, rechovyna, place);
+    console.log(result);
+    document.getElementById("result-water").innerText = "Податок: " + result + "грн";
+});
+
+document.getElementById("poll1").addEventListener("change", () => {
+    console.log("moove 1");
+    document.getElementById("air-poll").style.display = "block";
+    document.getElementById("water-poll").style.display = "none";
+    document.getElementById("storage-poll").style.display = "none";
+    document.getElementById("radio-poll").style.display = "none";
+    document.getElementById("storage-radio-poll").style.display = "none";
+})
+
+document.getElementById("poll2").addEventListener("change", () => {
+    console.log("moove 2");
+    document.getElementById("air-poll").style.display = "none";
+    document.getElementById("water-poll").style.display = "block";
+    document.getElementById("storage-poll").style.display = "none";
+    document.getElementById("radio-poll").style.display = "none";
+    document.getElementById("storage-radio-poll").style.display = "none";
+})
+
+document.getElementById("poll3").addEventListener("change", () => {
+    console.log("moove 3");
+    document.getElementById("air-poll").style.display = "none";
+    document.getElementById("water-poll").style.display = "none";
+    document.getElementById("storage-poll").style.display = "block";
+    document.getElementById("radio-poll").style.display = "none";
+    document.getElementById("storage-radio-poll").style.display = "none";
+})
+
+document.getElementById("poll4").addEventListener("change", () => {
+    console.log("moove 4");
+    document.getElementById("air-poll").style.display = "none";
+    document.getElementById("water-poll").style.display = "none";
+    document.getElementById("storage-poll").style.display = "none";
+    document.getElementById("radio-poll").style.display = "block";
+    document.getElementById("storage-radio-poll").style.display = "none";
+})
+
+document.getElementById("poll5").addEventListener("change", () => {
+    console.log("moove 5");
+    document.getElementById("air-poll").style.display = "none";
+    document.getElementById("water-poll").style.display = "none";
+    document.getElementById("storage-poll").style.display = "none";
+    document.getElementById("radio-poll").style.display = "none";
+    document.getElementById("storage-radio-poll").style.display = "block";
+})
