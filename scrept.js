@@ -55,6 +55,7 @@ let airPollution = {
         69113.38
     ]
 }
+
 //ready
 let waterPollution = {
     rechovina: [
@@ -132,7 +133,7 @@ function nalogNaWater(amount, rechovyna, place) {
 
 //ready
 function nalogNaLezhachih(amount, thing, safety, place) {
-    let nalog = lezhachiVidhody.podatok[lezhachiVidhody.things.findIndex(thing)];
+    let nalog = lezhachiVidhody.podatok[lezhachiVidhody.things.findIndex((elem) => {return elem == thing})];
     if (!safety) {
         if (place == "В межах населенного пункту") {
             return nalog * amount * 3 * 3;
@@ -159,11 +160,11 @@ function nalogNaRadCraft(kvth, kategory) {
 //ready
 function nalogNaRadLezhachih(type, kuby) {
     if (type == "Високоактивні") {
-        let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex(type)];
+        let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
         return nalog * kuby;
     }
     else {
-        let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex(type)];
+        let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
         return nalog * kuby;
     }
 }
@@ -175,6 +176,16 @@ document.getElementById("air-form").addEventListener('submit', evt => {
 document.getElementById("water-form").addEventListener('submit', evt => {
     evt.preventDefault();  
 });
+
+document.getElementById("storage-form").addEventListener('submit', evt => {
+    evt.preventDefault();  
+});
+
+document.getElementById("radio-form").addEventListener('submit', evt => {
+    evt.preventDefault();  
+});
+
+
 
 document.getElementById("rozrah-air").addEventListener("click", () => {
     let massa = document.getElementById("amount-air").value;
@@ -200,6 +211,35 @@ document.getElementById("rozrah-water").addEventListener("click", () => {
     console.log(result);
     document.getElementById("result-water").innerText = "Податок: " + result + "грн";
 });
+
+document.getElementById("rozrah-storage").addEventListener("click", () => {
+    let amount = document.getElementById("amount-things").value;
+    let e = document.getElementById("storagePoll");
+    let type = e.options[e.selectedIndex].text;
+    e = document.getElementById("choose-place-storage");
+    let place = e.options[e.selectedIndex].text;
+    let safety = document.getElementById("isSafety").checked;
+    console.log(type);
+    console.log(amount);
+    console.log(place);
+    console.log(safety);
+    let result = nalogNaLezhachih(amount, type, safety, place);
+    console.log(result);
+    document.getElementById("result-storage").innerText = "Податок: " + result + "грн";
+});
+
+document.getElementById("rozrah-radio").addEventListener("click", () => {
+    let kvth = document.getElementById("amount-kvth").value;
+    let e = document.getElementById("radioPoll");
+    let type = e.options[e.selectedIndex].text;
+    console.log(type);
+    console.log(kvth);
+    let result = nalogNaRadCraft(kvth, type);
+    console.log(result);
+    document.getElementById("result-radio").innerText = "Податок: " + result + "грн";
+});
+
+
 
 document.getElementById("poll1").addEventListener("change", () => {
     console.log("moove 1");
