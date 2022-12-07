@@ -158,14 +158,26 @@ function nalogNaRadCraft(kvth, kategory) {
 }
 
 //ready
-function nalogNaRadLezhachih(type, kuby) {
-    if (type == "Високоактивні") {
-        let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
-        return nalog * kuby;
+function nalogNaRadLezhachih(type, vipro, kuby) {
+    if (type == "Радіоактивні відходи (крім відходів, представлених як джерела іонізуючого випромінювання)") {
+        if (vipro == "Високоактивні") {
+            let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            return nalog * kuby;
+        }
+        else {
+            let nalog = lezhachiNuclearVidhody.podatokNaRaNedIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            return nalog * kuby;
+        }
     }
     else {
-        let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
-        return nalog * kuby;
+        if (vipro == "Високоактивні") {
+            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            return nalog * kuby;
+        }
+        else {
+            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            return nalog * kuby;
+        }
     }
 }
 
@@ -182,6 +194,10 @@ document.getElementById("storage-form").addEventListener('submit', evt => {
 });
 
 document.getElementById("radio-form").addEventListener('submit', evt => {
+    evt.preventDefault();  
+});
+
+document.getElementById("storage-radio-form").addEventListener('submit', evt => {
     evt.preventDefault();  
 });
 
@@ -235,6 +251,20 @@ document.getElementById("rozrah-radio").addEventListener("click", () => {
     console.log(type);
     console.log(kvth);
     let result = nalogNaRadCraft(kvth, type);
+    console.log(result);
+    document.getElementById("result-radio").innerText = "Податок: " + result + "грн";
+});
+
+document.getElementById("rozrah-storage-radio").addEventListener("click", () => {
+    let amount = document.getElementById("amount-radio").value;
+    let e = document.getElementById("storageRadio");
+    let vipro = e.options[e.selectedIndex].text;
+    e = document.getElementById("storageRadioPoll");
+    let type = e.options[e.selectedIndex].text;
+    console.log(type);
+    console.log(vipro);
+    console.log(amount);
+    let result = nalogNaRadLezhachih(type, vipro, amount);
     console.log(result);
     document.getElementById("result-radio").innerText = "Податок: " + result + "грн";
 });

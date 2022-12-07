@@ -181,7 +181,7 @@
         </div>
         <div class="radio-poll" id="radio-poll">
             <form class="radio-form" id="radio-form">
-                <p>Вкажіть тип ядерного палива</p>
+                <p>Вкажіть тип ядерних відходів</p>
                 <select name="selectRadio" id="radioPoll">
                     <option value="visoko">Високоактивні</option>
                     <option value="nizko">Середньоактивні та низькоактивні</option>
@@ -196,29 +196,25 @@
             </form>
         </div>
         <div class="storage-radio-poll" id="storage-radio-poll">
-            <!-- <form class="storage-form" id="storage-form">
-                <p>Вкажіть тип відходу</p>
-                <select name="selectStorage" id="storagePoll">
-                    <option value="oblad">Обладнання та прилади, що містять ртуть, елементи з іонізуючим випромінюванням</option>
-                    <option value="lampa">Люмінесцентні лампи</option>
-                    <option value="inshe">Інше</option>
+            <form class="storage-radio-form" id="storage-radio-form">
+                <p>Вкажіть категорію відходів</p>
+                <select name="selectStorageRadio" id="storageRadioPoll">
+                    <option value="ujasno">Радіоактивні відходи (крім відходів, представлених як джерела іонізуючого випромінювання)</option>
+                    <option value="terpimo">Радіоактивні відходи, представлені як джерела іонізуючого випромінювання</option>
                 </select>
                 <br><br>
-                <p class="p-water">Вкажіть кількість</p>
-                <p class="p-water right">Оберіть місце розташування</p>
+                <p class="p-water">Вкажіть кількість (куб.метрів або куб.сантиметрів)</p>
+                <p class="p-water right">Вкажіть тип ядерних відходів</p>
                 <br>
-                <input type="text" id="amount-things">
-                <select class="selectStorage" id="choose-place-storage">
-                    <option value="ploho">В межах населеного пункту або на відстані менш як 3 км від таких меж</option>
-                    <option value="terpimo">На відстані від 3 км і більше від меж населеного пункту</option>
+                <input type="text" id="amount-radio">
+                <select class="selectStorageRadio" id="storageRadio">
+                    <option value="ploho">Високоактивні</option>
+                    <option value="terpimo">Середньоактивні та низькоактивні</option>
                 </select>
                 <br><br>
-                <p class="p-water">Чи забезпечуюється повне виключення забруднення атмосферного повітря або водних об'єктів</p>
-                <input type="checkbox" id="isSafety">
-                <br><br>
-                <button class="btn btn-primary" id="rozrah-storage">Розрахувати</button>
-                <p id="result-storage" class="result"></p>
-            </form> -->
+                <button class="btn btn-primary" id="rozrah-storage-radio">Розрахувати</button>
+                <p id="result-storage-radio" class="result"></p>
+            </form>
         </div>
     </div>
     <script src="scrept.js"></script>
