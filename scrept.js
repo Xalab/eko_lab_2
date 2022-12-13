@@ -161,21 +161,21 @@ function nalogNaRadCraft(kvth, kategory) {
 function nalogNaRadLezhachih(type, vipro, kuby) {
     if (type == "Радіоактивні відходи (крім відходів, представлених як джерела іонізуючого випромінювання)") {
         if (vipro == "Високоактивні") {
-            let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == vipro})];
             return nalog * kuby;
         }
         else {
-            let nalog = lezhachiNuclearVidhody.podatokNaRaNedIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            let nalog = lezhachiNuclearVidhody.podatokNaRadNeIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == vipro})];
             return nalog * kuby;
         }
     }
     else {
         if (vipro == "Високоактивні") {
-            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == vipro})];
             return nalog * kuby;
         }
         else {
-            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == type})];
+            let nalog = lezhachiNuclearVidhody.podatokNaRadIon[lezhachiNuclearVidhody.type.findIndex((elem) => {return elem == vipro})];
             return nalog * kuby;
         }
     }
@@ -266,7 +266,7 @@ document.getElementById("rozrah-storage-radio").addEventListener("click", () => 
     console.log(amount);
     let result = nalogNaRadLezhachih(type, vipro, amount);
     console.log(result);
-    document.getElementById("result-radio").innerText = "Податок: " + result + "грн";
+    document.getElementById("result-storage-radio").innerText = "Податок: " + result + "грн";
 });
 
 
